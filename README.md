@@ -50,41 +50,45 @@ erDiagram
   ITEM ||--|| ITEM_DETAILS : has
   ITEM ||--|| METADATA : has
   ITEM ||--|{ CATEGORY : belongs_to
-  USER {
-      int id
-      text username
-      text password
-  }
-  INVENTORY {
-      int id
-      int user_id
-  }
-  ITEM {
-      int id
-      text name
-      int inventory_id
-      text notes
-      boolean isMissing
-      boolean isBorrowed
-  }
-  ITEM_DETAILS {
-      int item_id
-      text description
-      int quantity
-  }
-  CATEGORY {
-      int id
-      text name
-  }
-  METADATA {
-      int id
-      int item_id
-      datetime created_at
-      datetime updated_at
-  }
-  ```
+ USER {
+    int id PK
+    text username
+    text password
+}
 
-// modify diagram to have junction tables, surrogate keys and composite keys
+INVENTORY {
+    int id PK
+    int user_id FK
+}
+
+ITEM {
+    int id PK
+    text name
+    int inventory_id FK
+    text notes
+    boolean isMissing
+    boolean isBorrowed
+}
+
+ITEM_DETAILS {
+    int id PK
+    int item_id FK
+    text description
+    int quantity
+}
+
+METADATA {
+    int id PK
+    int item_id FK
+    datetime created_at
+    datetime updated_at
+}
+
+CATEGORY {
+    int id PK
+    text name
+}
+  ```
 
 ## API Specification
 
